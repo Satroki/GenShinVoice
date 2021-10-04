@@ -1,0 +1,27 @@
+﻿@page "{name?}"
+@model GenShinVoice.Pages.YsModel
+
+@{
+    @switch (Model.Mode)
+    {
+        case 0:
+            <ul>
+                @foreach (var c in Model.Characters)
+                {
+                    <li><a href="/Ys/@c">@c</a></li>
+                }
+            </ul>
+            break;
+        case 1:
+            <div class="visible-md"></div>
+            <div class="visible-md"></div>
+            @foreach (var d in Model.Datas)
+            {
+                <div class="visible-md"><div style="margin:2px 0px;width:100%;display: table;overflow: hidden;padding:1px;"><div style="display: table-cell;width:180px;vertical-align: middle;background:#8F98A6;padding:5px 10px;color:#fff;font-weight:bold">@d.Title</div><div style="display: table-cell;width:45px;vertical-align: middle;background:#E9EDF2;padding:5px 5px;border-left:1px solid #fff;border-right:1px solid #fff"><div class="bikit-audio" data-src="@d.Cn" onclick="PlayAudio('@d.Cn')"></div></div><div style="display: table-cell;width:45px;vertical-align: middle;background:#E9EDF2;padding:5px 5px;border-left:1px solid #fff;border-right:1px solid #fff"><div class="bikit-audio" data-src="@d.Jp" onclick="PlayAudio('@d.Jp')"></div></div><div style="display: table-cell;width:45px;vertical-align: middle;background:#E9EDF2;padding:5px 5px;border-left:1px solid #fff;border-right:1px solid #fff"><div class="bikit-audio" data-src="@d.En" onclick="PlayAudio('@d.En')"></div></div><div style="display: table-cell;width:45px;vertical-align: middle;background:#E9EDF2;padding:5px 5px;border-left:1px solid #fff;border-right:1px solid #fff"><div class="bikit-audio" data-src="@d.Kr" onclick="PlayAudio('@d.Kr')"></div></div><div style="display: table-cell;vertical-align: middle;background:#E9EDF2;padding:5px 10px">@d.Text</div></div></div>
+            }
+            break;
+        case 2:
+            <p>本页面目前没有内容。您可以在其他页面中</p>
+            break;
+    }
+}
