@@ -26,6 +26,13 @@ namespace GenShinVoice
             services.AddRazorPages();
             services.AddHttpClient();
             services.AddMemoryCache();
+
+            IFreeSql fsql = new FreeSql.FreeSqlBuilder()
+                .UseConnectionString(FreeSql.DataType.Sqlite, @"Data Source=ys.db")
+                .UseAutoSyncStructure(true)
+                .Build();
+            services.AddSingleton<IFreeSql>(fsql);
+            services.AddScoped<DataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

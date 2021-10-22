@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FreeSql.Provider.Sqlite" Version="2.6.100" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.37" />
   </ItemGroup>
 
