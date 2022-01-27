@@ -38,6 +38,18 @@ namespace GenShinVoice.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<List<Character>> GetAll()
+        {
+            var cs = await db.Select<Character>().ToListAsync();
+            var vs = await db.Select<VoiceData>().ToListAsync();
+            var cd = cs.ToDictionary(c => c.Id);
+            foreach (var g in vs.GroupBy(v => v.CharacterId))
+            {
+                cd[g.Key].VoiceDatas = g.ToList();
+            }
+            return cs;
+        }
 
         [HttpGet]
         public async Task Download()
